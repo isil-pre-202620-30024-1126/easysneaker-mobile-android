@@ -24,7 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun OnBoardingScreen(modifier: Modifier = Modifier) {
+fun OnBoardingScreen(
+    modifier: Modifier = Modifier,
+    onSignIn: () -> Unit
+    ) {
 
     val buttonColor = Color(0xFF3E846F)
     Column(
@@ -67,7 +70,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedButton(
-            onClick = {},
+            onClick = onSignIn,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
@@ -86,5 +89,5 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun OnBoardingScreenPreview() {
-    OnBoardingScreen()
+    OnBoardingScreen {}
 }
