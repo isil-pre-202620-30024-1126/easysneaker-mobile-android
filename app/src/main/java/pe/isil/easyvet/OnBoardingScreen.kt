@@ -53,7 +53,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
             onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 16.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = buttonColor
             )
@@ -64,13 +64,13 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
             )
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedButton(
             onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 16.dp),
         ) {
             Text(
                 text = "Sign In",
