@@ -8,20 +8,41 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pe.isil.easyvet.ui.theme.EasyVetTheme
+import pe.isil.easyvet.ui.visibility
+import pe.isil.easyvet.ui.visibilityOff
 
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {
 
+    var email by remember {
+        mutableStateOf("")
+    }
+
+    var password by remember {
+        mutableStateOf("")
+    }
+
+    var isPasswordHidden by remember {
+        mutableStateOf(true)
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -29,8 +50,10 @@ fun LoginScreen(onLogin: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = email,
+            onValueChange = {
+                email = it
+            },
             placeholder = {
                 Text(text = "Email")
             },
@@ -40,14 +63,32 @@ fun LoginScreen(onLogin: () -> Unit) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = password,
+            onValueChange = {
+                password = it
+            },
             placeholder = {
                 Text(text = "Password")
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 16.dp),
+            visualTransformation = if (isPasswordHidden)
+                PasswordVisualTransformation()
+            else
+                VisualTransformation.None,
+            trailingIcon = {
+                IconButton(
+                    onClick = {
+                        isPasswordHidden = !isPasswordHidden
+                    }
+                ) {
+                    Icon(
+                        if (isPasswordHidden)
+                            visibilityOff else visibility, contentDescription = null
+                    )
+                }
+            }
         )
 
 
