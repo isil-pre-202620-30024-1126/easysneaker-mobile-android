@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,7 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import pe.isil.easyvet.ui.theme.EasyVetTheme
 
 @Composable
@@ -44,8 +44,9 @@ fun OnBoardingScreen(
 
         Text(
             text = "From Bowl to Soul\nWe've Got It All!",
-            textAlign = TextAlign.Center, fontSize = 32.sp,
-            fontWeight = FontWeight.Bold
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.SemiBold,
+            style = MaterialTheme.typography.headlineLarge,
         )
 
         Spacer(modifier = Modifier.weight(1f))
