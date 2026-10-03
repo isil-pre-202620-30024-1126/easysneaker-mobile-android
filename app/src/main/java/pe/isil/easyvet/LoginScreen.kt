@@ -69,7 +69,10 @@ fun LoginScreen(onLogin: () -> Unit) {
         }
 
         TextButton(onClick = {}) {
-            Text(text = "Forgot password", color = MaterialTheme.colorScheme.primary)
+            Text(
+                text = "Forgot password",
+                color = MaterialTheme.colorScheme.primary
+            )
 
         }
     }
