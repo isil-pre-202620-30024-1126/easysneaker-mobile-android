@@ -19,6 +19,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -30,13 +31,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import pe.isil.easyvet.ui.arrowForward
 import pe.isil.easyvet.ui.notifications
+import pe.isil.easyvet.ui.theme.EasyVetTheme
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    val backgroundColor = Color(0xFF3E846F)
-    val buttonColor = Color(0xFFF6C444)
 
     Scaffold { paddingValues ->
         Column(
@@ -56,7 +55,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .size(48.dp)
                         .clip(CircleShape)
-                        .background(backgroundColor)
+                        .background(MaterialTheme.colorScheme.primary)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Column(
@@ -88,7 +87,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(8.dp))
             Surface(
-                color = backgroundColor,
+                color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp),
@@ -112,10 +111,10 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         Button(
                             onClick = {},
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = buttonColor
+                                containerColor = MaterialTheme.colorScheme.tertiaryContainer
                             )
                         ) {
-                            Text("Shop now", color = backgroundColor)
+                            Text("Shop now", color = MaterialTheme.colorScheme.primary)
                         }
                     }
                     Spacer(modifier = Modifier.weight(1f))
@@ -137,5 +136,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen()
+    EasyVetTheme(dynamicColor = false) {
+        HomeScreen()
+    }
 }
