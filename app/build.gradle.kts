@@ -55,4 +55,8 @@ dependencies {
 
     // Navigation Compose
     implementation(libs.navigation.compose)
+
+    // Coil Compose
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }

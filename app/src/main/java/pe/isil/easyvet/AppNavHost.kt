@@ -5,6 +5,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import pe.isil.easyvet.features.auth.presentation.LoginScreen
+import pe.isil.easyvet.features.home.presentation.HomeScreen
+import pe.isil.easyvet.features.onboarding.presentation.OnBoardingScreen
 
 @Composable
 fun AppNavHost() {

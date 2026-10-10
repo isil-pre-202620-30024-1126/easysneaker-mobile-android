@@ -1,4 +1,4 @@
-package pe.isil.easyvet
+package pe.isil.easyvet.features.onboarding.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pe.isil.easyvet.R
 import pe.isil.easyvet.core.designsystems.theme.EasyVetTheme
 
 @Composable

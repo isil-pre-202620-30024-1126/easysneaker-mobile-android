@@ -1,4 +1,4 @@
-package pe.isil.easyvet
+package pe.isil.easyvet.features.home.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,11 +31,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import pe.isil.easyvet.R
 import pe.isil.easyvet.core.designsystems.theme.EasyVetTheme
 import pe.isil.easyvet.ui.notifications
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    viewModel: HomeViewModel = viewModel()
+) {
+
+    val state = viewModel.state.collectAsStateWithLifecycle().value
 
     Scaffold { paddingValues ->
         Column(
@@ -125,7 +133,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     )
                 }
 
+
             }
+
+            ProductList(products = state.products)
+
 
         }
     }
