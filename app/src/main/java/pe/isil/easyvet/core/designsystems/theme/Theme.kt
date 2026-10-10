@@ -1,4 +1,4 @@
-package pe.isil.easyvet.ui.theme
+package pe.isil.easyvet.core.designsystems.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

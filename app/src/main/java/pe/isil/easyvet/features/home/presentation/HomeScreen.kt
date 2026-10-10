@@ -32,7 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pe.isil.easyvet.ui.notifications
-import pe.isil.easyvet.ui.theme.EasyVetTheme
+import pe.isil.easyvet.core.designsystems.theme.EasyVetTheme
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
