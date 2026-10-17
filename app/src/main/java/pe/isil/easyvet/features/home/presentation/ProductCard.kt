@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import pe.isil.easyvet.core.favorite
 import pe.isil.easyvet.core.favoriteOutlined
-import pe.isil.easyvet.core.notifications
 import pe.isil.easyvet.features.home.domain.Product
 
 @Composable
