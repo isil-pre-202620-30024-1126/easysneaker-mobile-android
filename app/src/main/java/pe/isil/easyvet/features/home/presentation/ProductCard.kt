@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import pe.isil.easyvet.core.favorite
+import pe.isil.easyvet.core.favoriteOutlined
 import pe.isil.easyvet.core.notifications
 import pe.isil.easyvet.features.home.domain.Product
 
@@ -29,9 +32,11 @@ fun ProductCard(product: Product) {
     var isFavorite by remember {
         mutableStateOf(false)
     }
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .padding(8.dp)) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
         Box {
             Column(modifier = Modifier.padding(8.dp)) {
                 AsyncImage(
@@ -49,9 +54,16 @@ fun ProductCard(product: Product) {
             }
             IconButton(
                 onClick = { isFavorite = !isFavorite },
-                modifier = Modifier.align(Alignment.TopEnd)
+                modifier = Modifier.align(Alignment.TopEnd),
+                colors = IconButtonDefaults.iconButtonColors(
+                    contentColor = MaterialTheme.colorScheme.primary,
+                    containerColor = MaterialTheme.colorScheme.onPrimary
+                )
             ) {
-                Icon(imageVector = notifications, contentDescription = "favorite")
+                Icon(
+                    imageVector = if (isFavorite) favorite else favoriteOutlined,
+                    contentDescription = "favorite"
+                )
             }
         }
 
