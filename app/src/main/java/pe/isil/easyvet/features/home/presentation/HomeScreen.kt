@@ -49,12 +49,10 @@ fun HomeScreen(
         Column(
             modifier = modifier
                 .padding(paddingValues)
-                .padding(horizontal = 8.dp)
-
         ) {
-
             Row(
                 modifier = Modifier
+                    .padding(8.dp)
                     .height(48.dp)
             ) {
                 Image(
@@ -89,8 +87,6 @@ fun HomeScreen(
                             .padding(12.dp)
                     )
                 }
-
-
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -98,6 +94,7 @@ fun HomeScreen(
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(horizontal = 8.dp)
                     .height(200.dp),
                 shape = RoundedCornerShape(CornerSize(16.dp))
 
@@ -132,13 +129,8 @@ fun HomeScreen(
                         modifier = Modifier.height(200.dp)
                     )
                 }
-
-
             }
-
             ProductList(products = state.products)
-
-
         }
     }
 

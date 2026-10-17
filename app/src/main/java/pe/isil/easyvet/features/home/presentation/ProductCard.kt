@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import coil3.compose.AsyncImage
 import pe.isil.easyvet.features.home.domain.Product
 
@@ -23,7 +24,7 @@ fun ProductCard(product: Product) {
                 contentDescription = product.name,
                 modifier = Modifier.fillMaxWidth().height(200.dp)
             )
-            Text(product.name, fontWeight = FontWeight.Bold)
+            Text(product.name, fontWeight = FontWeight.Bold, maxLines = 1)
             Text(text = "Rating: ${product.rating}", style = MaterialTheme.typography.bodyMedium)
         }
     }
