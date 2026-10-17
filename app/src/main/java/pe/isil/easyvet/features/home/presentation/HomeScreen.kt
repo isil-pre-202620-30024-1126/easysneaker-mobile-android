@@ -35,7 +35,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import pe.isil.easyvet.R
 import pe.isil.easyvet.core.designsystems.theme.EasyVetTheme
-import pe.isil.easyvet.ui.notifications
+import pe.isil.easyvet.core.notifications
 
 @Composable
 fun HomeScreen(

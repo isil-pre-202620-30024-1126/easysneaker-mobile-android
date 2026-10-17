@@ -26,8 +26,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pe.isil.easyvet.core.designsystems.theme.EasyVetTheme
-import pe.isil.easyvet.ui.visibility
-import pe.isil.easyvet.ui.visibilityOff
+import pe.isil.easyvet.core.visibility
+import pe.isil.easyvet.core.visibilityOff
 
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {
