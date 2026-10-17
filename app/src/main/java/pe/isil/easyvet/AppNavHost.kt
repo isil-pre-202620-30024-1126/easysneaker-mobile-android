@@ -5,30 +5,40 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import kotlinx.serialization.Serializable
 import pe.isil.easyvet.features.auth.presentation.LoginScreen
-import pe.isil.easyvet.features.home.presentation.HomeScreen
 import pe.isil.easyvet.features.onboarding.presentation.OnBoardingScreen
+import pe.isil.easyvet.main.MainScreen
+
+@Serializable
+data object OnBoardingRoute
+
+@Serializable
+data object LoginRoute
+
+@Serializable
+data object MainRoute
 
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "onboarding") {
+    NavHost(navController = navController, startDestination = OnBoardingRoute) {
 
-        composable("onboarding") {
+        composable<OnBoardingRoute> {
             OnBoardingScreen {
-                navController.navigate("login")
+                navController.navigate(LoginRoute)
             }
         }
 
-        composable("login") {
+        composable<LoginRoute> {
             LoginScreen {
-                navController.navigate("home")
+                navController.navigate(MainRoute)
             }
         }
 
-        composable ("home"){
-            HomeScreen()
+        composable <MainRoute>(){
+            MainScreen()
         }
 
     }
