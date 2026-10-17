@@ -20,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import pe.isil.easyvet.features.home.domain.Product
 import pe.isil.easyvet.core.notifications
+import pe.isil.easyvet.features.home.domain.Product
 
 @Composable
 fun ProductCard(product: Product) {
