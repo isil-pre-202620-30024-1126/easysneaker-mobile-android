@@ -20,7 +20,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,10 +44,8 @@ fun HomeScreen(
 
     val state = viewModel.state.collectAsStateWithLifecycle().value
 
-    Scaffold { paddingValues ->
         Column(
-            modifier = modifier
-                .padding(paddingValues)
+            modifier = Modifier
         ) {
             Row(
                 modifier = Modifier
@@ -132,7 +129,7 @@ fun HomeScreen(
             }
             ProductList(products = state.products)
         }
-    }
+
 
 }
 
