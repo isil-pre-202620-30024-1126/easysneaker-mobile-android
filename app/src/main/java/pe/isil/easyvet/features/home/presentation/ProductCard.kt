@@ -26,11 +26,13 @@ import pe.isil.easyvet.core.favoriteOutlined
 import pe.isil.easyvet.features.home.domain.Product
 
 @Composable
-fun ProductCard(product: Product) {
+fun ProductCard(
+    product: Product,
+    isFavorite: Boolean,
+    onToggleFavorite: () -> Unit
+) {
 
-    var isFavorite by remember {
-        mutableStateOf(false)
-    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -52,7 +54,7 @@ fun ProductCard(product: Product) {
                 )
             }
             IconButton(
-                onClick = { isFavorite = !isFavorite },
+                onClick = onToggleFavorite,
                 modifier = Modifier.align(Alignment.TopEnd),
                 colors = IconButtonDefaults.iconButtonColors(
                     contentColor = MaterialTheme.colorScheme.primary,

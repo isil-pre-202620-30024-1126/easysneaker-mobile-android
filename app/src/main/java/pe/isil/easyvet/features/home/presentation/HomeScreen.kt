@@ -44,91 +44,96 @@ fun HomeScreen(
 
     val state = viewModel.state.collectAsStateWithLifecycle().value
 
-        Column(
+    Column(
+        modifier = modifier
+    ) {
+        Row(
             modifier = Modifier
+                .padding(8.dp)
+                .height(48.dp)
         ) {
-            Row(
+            Image(
+                painter = painterResource(R.drawable.user),
+                contentDescription = "user",
                 modifier = Modifier
-                    .padding(8.dp)
-                    .height(48.dp)
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primary)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Column(
+                modifier = Modifier.fillMaxHeight(),
+                verticalArrangement = Arrangement.SpaceEvenly
             ) {
-                Image(
-                    painter = painterResource(R.drawable.user),
-                    contentDescription = "user",
+                Text(text = "Welcome back", fontWeight = FontWeight.Bold)
+                Text(text = "Jon Doe")
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+            IconButton(
+                onClick = {},
+                modifier = Modifier.size(48.dp)
+            ) {
+                Icon(
+                    imageVector = notifications,
+                    contentDescription = "notification",
                     modifier = Modifier
                         .size(48.dp)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.primary)
+                        .background(Color.LightGray.copy(alpha = 0.25f))
+                        .padding(12.dp)
                 )
-                Spacer(modifier = Modifier.width(8.dp))
-                Column(
-                    modifier = Modifier.fillMaxHeight(),
-                    verticalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(text = "Welcome back", fontWeight = FontWeight.Bold)
-                    Text(text = "Jon Doe")
-                }
-
-                Spacer(modifier = Modifier.weight(1f))
-                IconButton(
-                    onClick = {},
-                    modifier = Modifier.size(48.dp)
-                ) {
-                    Icon(
-                        imageVector = notifications,
-                        contentDescription = "notification",
-                        modifier = Modifier
-                            .size(48.dp)
-                            .clip(CircleShape)
-                            .background(Color.LightGray.copy(alpha = 0.25f))
-                            .padding(12.dp)
-                    )
-                }
             }
-
-            Spacer(modifier = Modifier.height(8.dp))
-            Surface(
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
-                    .height(200.dp),
-                shape = RoundedCornerShape(CornerSize(16.dp))
-
-            ) {
-                Row {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .padding(
-                                8.dp,
-                            ),
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = "Christmas offer",
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
-                        )
-                        Button(
-                            onClick = {},
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.tertiaryContainer
-                            )
-                        ) {
-                            Text("Shop now", color = MaterialTheme.colorScheme.primary)
-                        }
-                    }
-                    Spacer(modifier = Modifier.weight(1f))
-                    Image(
-                        painter = painterResource(R.drawable.dog),
-                        contentDescription = "dog",
-                        modifier = Modifier.height(200.dp)
-                    )
-                }
-            }
-            ProductList(products = state.products)
         }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Surface(
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .height(200.dp),
+            shape = RoundedCornerShape(CornerSize(16.dp))
+
+        ) {
+            Row {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(
+                            8.dp,
+                        ),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Christmas offer",
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                    Button(
+                        onClick = {},
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.tertiaryContainer
+                        )
+                    ) {
+                        Text("Shop now", color = MaterialTheme.colorScheme.primary)
+                    }
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                Image(
+                    painter = painterResource(R.drawable.dog),
+                    contentDescription = "dog",
+                    modifier = Modifier.height(200.dp)
+                )
+            }
+        }
+        ProductList(
+            products = state.products,
+            favoriteProductsId = state.favoriteProductIds
+        ) { id ->
+            viewModel.toggleFavorite(id)
+        }
+    }
 
 
 }

@@ -25,6 +25,17 @@ class HomeViewModel(
         _state.update { currentState ->
             currentState.copy(products = products, isLoading = false)
         }
+    }
+
+    fun toggleFavorite(productId: Int) {
+        _state.update { currentState ->
+            val newFavorites = if (currentState.favoriteProductIds.contains(productId)) {
+                currentState.favoriteProductIds - productId
+            } else {
+                currentState.favoriteProductIds + productId
+            }
+            currentState.copy(favoriteProductIds = newFavorites)
+        }
 
     }
 
