@@ -20,6 +20,7 @@ import pe.isil.easyvet.core.favorite
 import pe.isil.easyvet.core.favoriteOutlined
 import pe.isil.easyvet.core.home
 import pe.isil.easyvet.core.homeOutlined
+import pe.isil.easyvet.features.favorites.FavoritesScreen
 import pe.isil.easyvet.features.home.presentation.HomeScreen
 
 
@@ -61,7 +62,7 @@ fun MainScreen() {
                     HomeScreen()
                 }
                 MainScreenTab.FAVORITES -> {
-                    Text(text = "Favorites Screen")
+                    FavoritesScreen()
                 }
             }
         }
