@@ -1,11 +1,15 @@
 package pe.isil.easyvet.features.home.data
 
+import kotlinx.coroutines.delay
 import pe.isil.easyvet.features.home.domain.Product
 import pe.isil.easyvet.features.home.domain.ProductRepository
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 
 class InMemoryProductRepository : ProductRepository {
 
-    override fun getProducts(): List<Product> {
+    override suspend fun getProducts(): List<Product> {
+        delay(2000.milliseconds)
         return listOf(
             Product(
                 id = 1,
