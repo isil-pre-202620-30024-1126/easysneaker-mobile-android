@@ -6,10 +6,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import pe.isil.easyvet.features.home.data.InMemoryProductRepository
+import pe.isil.easyvet.features.home.domain.GetProductsUseCase
 import pe.isil.easyvet.features.home.domain.ProductRepository
 
 class HomeViewModel(
-    private val repository: ProductRepository = InMemoryProductRepository()
+    private val useCase: GetProductsUseCase = GetProductsUseCase()
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeState())
@@ -20,7 +21,7 @@ class HomeViewModel(
             currentState.copy(isLoading = true)
         }
 
-        val products = repository.getProducts()
+        val products = useCase()
 
         _state.update { currentState ->
             currentState.copy(products = products, isLoading = false)
