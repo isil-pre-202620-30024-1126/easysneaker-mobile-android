@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,12 +18,14 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -32,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import okhttp3.internal.http2.Header
 import pe.isil.easyvet.R
 import pe.isil.easyvet.core.designsystems.theme.EasyVetTheme
 import pe.isil.easyvet.core.notifications
@@ -47,92 +51,31 @@ fun HomeScreen(
     Column(
         modifier = modifier
     ) {
-        Row(
-            modifier = Modifier
-                .padding(8.dp)
-                .height(48.dp)
-        ) {
-            Image(
-                painter = painterResource(R.drawable.user),
-                contentDescription = "user",
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Column(
-                modifier = Modifier.fillMaxHeight(),
-                verticalArrangement = Arrangement.SpaceEvenly
-            ) {
-                Text(text = "Welcome back", fontWeight = FontWeight.Bold)
-                Text(text = "Jon Doe")
-            }
-
-            Spacer(modifier = Modifier.weight(1f))
-            IconButton(
-                onClick = {},
-                modifier = Modifier.size(48.dp)
-            ) {
-                Icon(
-                    imageVector = notifications,
-                    contentDescription = "notification",
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(CircleShape)
-                        .background(Color.LightGray.copy(alpha = 0.25f))
-                        .padding(12.dp)
-                )
-            }
-        }
-
+        HeaderSection()
         Spacer(modifier = Modifier.height(8.dp))
-        Surface(
-            color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 8.dp)
-                .height(200.dp),
-            shape = RoundedCornerShape(CornerSize(16.dp))
+        BannerSection()
 
-        ) {
-            Row {
+        when {
+            state.isLoading -> {
                 Column(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .padding(
-                            8.dp,
-                        ),
-                    verticalArrangement = Arrangement.Center
+                    modifier = Modifier.fillMaxSize(),
+
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(
-                        text = "Christmas offer",
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
-                    )
-                    Button(
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer
-                        )
-                    ) {
-                        Text("Shop now", color = MaterialTheme.colorScheme.primary)
-                    }
+                    CircularProgressIndicator()
                 }
-                Spacer(modifier = Modifier.weight(1f))
-                Image(
-                    painter = painterResource(R.drawable.dog),
-                    contentDescription = "dog",
-                    modifier = Modifier.height(200.dp)
-                )
             }
+
+            state.products.isNotEmpty() -> ProductList(
+                products = state.products,
+                favoriteProductsId = state.favoriteProductIds
+            ) { id ->
+                viewModel.toggleFavorite(id)
+            }
+
         }
-        ProductList(
-            products = state.products,
-            favoriteProductsId = state.favoriteProductIds
-        ) { id ->
-            viewModel.toggleFavorite(id)
-        }
+
     }
 
 
