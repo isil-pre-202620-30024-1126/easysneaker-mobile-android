@@ -7,7 +7,7 @@ class GetProductsUseCase(
 ) {
 
     @Override
-    operator fun invoke(): List<Product> {
+    suspend operator fun invoke(): List<Product> {
         return repository.getProducts()
     }
 }
