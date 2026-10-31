@@ -27,17 +27,25 @@ fun AppNavHost() {
 
         composable<OnBoardingRoute> {
             OnBoardingScreen {
-                navController.navigate(LoginRoute)
+                navController.navigate(LoginRoute) {
+                    popUpTo(OnBoardingRoute) {
+                        inclusive = true
+                    }
+                }
             }
         }
 
         composable<LoginRoute> {
             LoginScreen {
-                navController.navigate(MainRoute)
+                navController.navigate(MainRoute) {
+                    popUpTo(LoginRoute) {
+                        inclusive = true
+                    }
+                }
             }
         }
 
-        composable <MainRoute>(){
+        composable <MainRoute>{
             MainScreen()
         }
 
