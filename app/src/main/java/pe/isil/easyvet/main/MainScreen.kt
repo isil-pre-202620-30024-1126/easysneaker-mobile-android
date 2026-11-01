@@ -15,6 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import pe.isil.easyvet.R
 import pe.isil.easyvet.core.favorite
 import pe.isil.easyvet.core.favoriteOutlined
@@ -22,6 +23,7 @@ import pe.isil.easyvet.core.home
 import pe.isil.easyvet.core.homeOutlined
 import pe.isil.easyvet.features.favorites.FavoritesScreen
 import pe.isil.easyvet.features.home.presentation.HomeScreen
+import pe.isil.easyvet.features.home.presentation.HomeViewModel
 
 
 @Composable
@@ -56,13 +58,14 @@ fun MainScreen() {
 
         }
     ) { innerPadding ->
+        val viewModel: HomeViewModel = viewModel()
         Box(modifier = Modifier.padding(innerPadding)){
             when(selectedTab) {
                 MainScreenTab.HOME -> {
-                    HomeScreen()
+                    HomeScreen(viewModel =viewModel)
                 }
                 MainScreenTab.FAVORITES -> {
-                    FavoritesScreen()
+                    FavoritesScreen(viewModel =viewModel)
                 }
             }
         }

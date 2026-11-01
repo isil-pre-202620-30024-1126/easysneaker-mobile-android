@@ -8,12 +8,21 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import pe.isil.easyvet.features.home.data.InMemoryProductRepository
+import pe.isil.easyvet.features.favorites.data.InMemoryFavoriteRepository
+import pe.isil.easyvet.features.favorites.domain.FavoriteRepository
+import pe.isil.easyvet.features.favorites.domain.GetFavoritesUseCase
+import pe.isil.easyvet.features.favorites.domain.ToggleFavoriteUseCase
 import pe.isil.easyvet.features.home.domain.GetProductsUseCase
-import pe.isil.easyvet.features.home.domain.ProductRepository
 
 class HomeViewModel(
-    private val getProducts: GetProductsUseCase = GetProductsUseCase()
+    private val getProducts: GetProductsUseCase = GetProductsUseCase(),
+    favoriteRepository: FavoriteRepository =
+        InMemoryFavoriteRepository(),
+    private val getFavorites: GetFavoritesUseCase =
+        GetFavoritesUseCase(favoriteRepository),
+
+    private val toggleFavorite: ToggleFavoriteUseCase =
+        ToggleFavoriteUseCase(favoriteRepository)
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeState())
@@ -27,23 +36,23 @@ class HomeViewModel(
             }
 
             val products = getProducts()
+            val favoriteIds = getFavorites()
 
             _state.update { currentState ->
-                currentState.copy(products = products, isLoading = false)
+                currentState.copy(products = products, favoriteIds = favoriteIds, isLoading = false)
             }
 
         }
 
     }
 
-    fun toggleFavorite(productId: Int) {
+    fun toggleFavoriteProduct(id: Int) {
+        toggleFavorite(id)
+        val favoriteIds = getFavorites()
+
         _state.update { currentState ->
-            val newFavorites = if (currentState.favoriteProductIds.contains(productId)) {
-                currentState.favoriteProductIds - productId
-            } else {
-                currentState.favoriteProductIds + productId
-            }
-            currentState.copy(favoriteProductIds = newFavorites)
+
+            currentState.copy(favoriteIds = favoriteIds)
         }
 
     }

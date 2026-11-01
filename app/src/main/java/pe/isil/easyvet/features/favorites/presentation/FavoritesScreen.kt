@@ -14,10 +14,10 @@ fun FavoritesScreen(
     val state = viewModel.state.collectAsStateWithLifecycle().value
 
     ProductList(state.products.filter { product ->
-        state.favoriteProductIds.contains(product.id)
+        state.favoriteIds.contains(product.id)
     },
-        favoriteProductsId = state.favoriteProductIds
+        favoriteProductsId = state.favoriteIds
     ) { id ->
-        viewModel.toggleFavorite(id)
+        viewModel.toggleFavoriteProduct(id)
     }
 }

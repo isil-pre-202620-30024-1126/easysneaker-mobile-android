@@ -15,13 +15,16 @@ fun ProductList(
     LazyVerticalGrid(
         columns = GridCells.Fixed(2)
     ) {
+
         items(products) { product ->
+
             ProductCard(
                 product = product,
                 isFavorite = favoriteProductsId.contains(product.id),
                 onToggleFavorite = {
                     onToggleFavorite(product.id)
-                })
+                }
+            )
         }
     }
 }
