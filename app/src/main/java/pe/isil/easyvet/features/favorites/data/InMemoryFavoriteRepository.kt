@@ -12,7 +12,6 @@ class InMemoryFavoriteRepository: FavoriteRepository {
     }
 
     override fun addFavorite(id: Int) {
-        Log.d("InMemoryFavoriteRepository", "Adding favorite with id: $id")
         favoriteIds += id
     }
 
