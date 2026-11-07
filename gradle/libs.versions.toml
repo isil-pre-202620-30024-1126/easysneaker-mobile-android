@@ -11,11 +11,11 @@ kotlin = "2.4.21"
 composeBom = "2026.09.00"
 kotlinSerialization = "2.4.21"
 navigationCompose = "2.10.2"
+retrofit = "3.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
-coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -30,6 +30,13 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose"}
+
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
+
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
