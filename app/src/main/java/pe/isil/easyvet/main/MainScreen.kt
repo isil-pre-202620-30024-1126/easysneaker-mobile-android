@@ -21,7 +21,7 @@ import pe.isil.easyvet.core.favorite
 import pe.isil.easyvet.core.favoriteOutlined
 import pe.isil.easyvet.core.home
 import pe.isil.easyvet.core.homeOutlined
-import pe.isil.easyvet.features.favorites.FavoritesScreen
+import pe.isil.easyvet.features.favorites.presentation.FavoritesScreen
 import pe.isil.easyvet.features.home.presentation.HomeScreen
 import pe.isil.easyvet.features.home.presentation.HomeViewModel
 

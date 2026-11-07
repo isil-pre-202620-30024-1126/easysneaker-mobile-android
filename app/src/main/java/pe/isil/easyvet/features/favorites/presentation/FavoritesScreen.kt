@@ -1,4 +1,4 @@
-package pe.isil.easyvet.features.favorites
+package pe.isil.easyvet.features.favorites.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
