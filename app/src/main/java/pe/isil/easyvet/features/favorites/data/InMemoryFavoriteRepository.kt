@@ -1,6 +1,5 @@
 package pe.isil.easyvet.features.favorites.data
 
-import android.util.Log
 import pe.isil.easyvet.features.favorites.domain.FavoriteRepository
 
 class InMemoryFavoriteRepository: FavoriteRepository {
