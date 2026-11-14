@@ -12,6 +12,8 @@ composeBom = "2026.09.00"
 kotlinSerialization = "2.4.21"
 navigationCompose = "2.10.2"
 retrofit = "3.0.0"
+ksp = "2.3.12"
+room = "3.0.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -37,9 +39,11 @@ coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 
+room-runtime = { module = "androidx.room3:room3-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room3:room3-compiler", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = 'org.jetbrains.kotlin.plugin.serialization', version.ref = "kotlinSerialization"}
-
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}

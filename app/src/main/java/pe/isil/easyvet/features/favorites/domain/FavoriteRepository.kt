@@ -4,7 +4,7 @@ interface FavoriteRepository {
 
     fun getFavorites(): Set<Int>
 
-    fun addFavorite(id: Int)
+    suspend fun addFavorite(id: Int)
 
-    fun removeFavorite(id: Int)
+    suspend fun removeFavorite(id: Int)
 }

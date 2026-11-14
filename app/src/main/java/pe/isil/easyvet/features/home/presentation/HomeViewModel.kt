@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import pe.isil.easyvet.features.favorites.data.FavoriteRepositoryImpl
 import pe.isil.easyvet.features.favorites.data.InMemoryFavoriteRepository
 import pe.isil.easyvet.features.favorites.domain.FavoriteRepository
 import pe.isil.easyvet.features.favorites.domain.GetFavoritesUseCase
@@ -17,7 +18,7 @@ import pe.isil.easyvet.features.home.domain.GetProductsUseCase
 class HomeViewModel(
     private val getProducts: GetProductsUseCase = GetProductsUseCase(),
     favoriteRepository: FavoriteRepository =
-        InMemoryFavoriteRepository(),
+        FavoriteRepositoryImpl(),
     private val getFavorites: GetFavoritesUseCase =
         GetFavoritesUseCase(favoriteRepository),
 
@@ -47,12 +48,14 @@ class HomeViewModel(
     }
 
     fun toggleFavoriteProduct(id: Int) {
-        toggleFavorite(id)
-        val favoriteIds = getFavorites()
+        viewModelScope.launch(Dispatchers.IO) {
+            toggleFavorite(id)
+            val favoriteIds = getFavorites()
 
-        _state.update { currentState ->
+            _state.update { currentState ->
 
-            currentState.copy(favoriteIds = favoriteIds)
+                currentState.copy(favoriteIds = favoriteIds)
+            }
         }
 
     }

@@ -10,11 +10,11 @@ class InMemoryFavoriteRepository: FavoriteRepository {
         return favoriteIds
     }
 
-    override fun addFavorite(id: Int) {
+    override suspend fun addFavorite(id: Int) {
         favoriteIds += id
     }
 
-    override fun removeFavorite(id: Int) {
+    override suspend fun removeFavorite(id: Int) {
         favoriteIds -= id
     }
 }
